@@ -7,16 +7,17 @@ self.addEventListener('install', function(event) {
         caches.open(CACHE_NAME).then(cache => {
             console.log('Opened cache', CACHE_NAME);
             return cache.addAll([
-                '/students.html',
-                '/students.css',
-                '/tasks.html',
-                '/tasks.css',
-                '/header/header.css',
+                '/html/students.html',
+                '/css/students.css',
+                '/html/tasks.html',
+                '/css/tasks.css',
+                '/css/header.css',
                 '/css/bootstrap.min.css',
+                '/css/all.min.css',
                 '/js/bootstrap.bundle.min.js',
-                '/script.js',
+                '/js/script.js',
                 '/manifest.json',
-                '/bell-icon.png',
+                '/images/bell-icon.png',
             ]);
         })
     );
