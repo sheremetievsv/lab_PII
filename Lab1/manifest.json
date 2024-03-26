@@ -1,5 +1,5 @@
 {
-    "name": "UCD cache",
+  "name": "UCD cache",
   "short_name": "CMS",
   "start_url": "students.html",
   "display": "standalone",
@@ -47,4 +47,4 @@
         "type": "image/png"
       }
     ]
-  }
+}

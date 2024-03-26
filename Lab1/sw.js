@@ -8,11 +8,14 @@ self.addEventListener('install', function(event) {
             console.log('Opened cache', CACHE_NAME);
             return cache.addAll([
                 '/students.html',
-                '/styles.css',
+                '/students.css',
+                '/tasks.html',
+                '/tasks.css',
+                '/header/header.css',
+                '/css/bootstrap.min.css',
+                '/js/bootstrap.bundle.min.js',
                 '/script.js',
                 '/manifest.json',
-                '/delete-icon.png',
-                '/edit-icon.png',
                 '/bell-icon.png',
             ]);
         })

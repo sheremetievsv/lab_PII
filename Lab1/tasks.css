@@ -1,0 +1,45 @@
+.header {
+    box-sizing: unset;
+}
+.container-fluid{
+    --bs-gutter-x: 0;
+}
+h1 {
+    
+    font-size: 2em;
+   
+    font-weight: bold;
+    margin: 0;
+    
+}
+.container{
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    --bs-gutter-x: 0;
+}
+.main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+}
+.main-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+
+ul {
+    margin-top: 1em;
+}
+body{
+    line-height: unset;
+}
+
+.mt-5 {
+    margin-top: 0 !important;
+}

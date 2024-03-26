@@ -1,0 +1,149 @@
+/* Layout */
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
+
+
+
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    padding: 10px;
+    height: 60px; 
+}
+
+.header-title {
+    font-size: 28px; 
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center; 
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background: none;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    height: 40px; 
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    color: #fff;
+}
+
+.notifications {
+    
+    animation: shake 2s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+    transform-origin: top left;
+  }
+  
+@keyframes shake {
+    10%,
+    90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+      transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+      transform: translate3d(4px, 0, 0);
+    }
+}
+
+/* Sidebar */
+.navigation {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.navigation-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navigation-item {
+    margin-bottom: 15px;
+}
+
+.navigation-item a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 8px 16px;
+    border-radius: 3px;
+}
+.navigation-item a:hover {
+    background-color: #333;
+    color: #fff;
+}
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.main-title {
+    font-size: 24px;
+    font-weight: bold;
+}
