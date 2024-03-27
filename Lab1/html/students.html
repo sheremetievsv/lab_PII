@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#317EFB"/>
     <meta name="description" content="CMS is a software system designed to support the distance learning process with an emphasis on learning, as opposed to a guided learning environment, which is characterised by an emphasis on managing the learning process. ">
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/students.css">
@@ -145,7 +146,8 @@
                 <div class="addStudentForm-elements">
                     <label for="birthday">Birthday:</label><br>
                     <input type="date" id="birthday" name="birthday" ><br> 
-                    <input type="hidden" id="id" name="inputId" value="000001"><br> 
+                    <span id="birthday-warning" style="color: red;"></span><br>
+                    <input type="hidden" id="id" name="inputId" value="000000"><br> 
                 </div>
                 <div class="addStudentForm-elements">
                     <button type="submit" aria-label="Add Student">Add Student</button>

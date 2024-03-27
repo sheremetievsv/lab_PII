@@ -1,5 +1,5 @@
 
-SW:  CACHE_NAME = 'UCD cache';
+SW:  CACHE_NAME = 'PWA_Cache';
 
 
 self.addEventListener('install', function(event) {
@@ -12,12 +12,12 @@ self.addEventListener('install', function(event) {
                 '/html/tasks.html',
                 '/css/tasks.css',
                 '/css/header.css',
-                '/css/bootstrap.min.css',
+                
                 '/css/all.min.css',
-                '/js/bootstrap.bundle.min.js',
+                
                 '/js/script.js',
-                '/manifest.json',
-                '/images/bell-icon.png',
+                '/manifest.json',  
+                '/images/bell-icon.png'
             ]);
         })
     );

@@ -18,10 +18,18 @@ let rowToRemove = null;
 addButton.addEventListener('click', () => {
     document.getElementById('modal-content-title').textContent = 'Add Student';
     document.querySelector('#addStudentForm button[type="submit"]').textContent = 'Submit';
+    
     modal.style.display = 'block';
 });
 
 closeButton.addEventListener('click', () => {
+    const inputdate = document.getElementById('birthday');
+const inputname = document.getElementById('name');
+const inputsurname = document.getElementById('surname');
+document.getElementById('birthday-warning').textContent = "";
+    inputdate.style.border = '1px solid #ccc';
+    inputname.style.border = '1px solid #ccc';
+    inputsurname.style.border = '1px solid #ccc';
     resetModalAndForm();
 });
 
@@ -60,7 +68,18 @@ addStudentForm.addEventListener('submit', (event) => {
     const gender = document.getElementById('gender').value;
     const birthday = document.getElementById('birthday').value;
     const id = document.getElementById('id').value;
-    if (name != "" && surname != "" && birthday != "") {
+    
+    // Parse birthday into a Date object
+    const inputBirthday = new Date(birthday);
+    
+    // Get today's date
+    const today = new Date();
+    
+    // Calculate the date 16 years ago
+    const sixteenYearsAgo = new Date();
+    sixteenYearsAgo.setFullYear(today.getFullYear() - 16);
+
+    if (name !== "" && surname !== "" && birthday !== "" && inputBirthday < sixteenYearsAgo) {
         const editingRow = document.querySelector('.editing');
         if (editingRow) {
             editingRow.cells[1].textContent = group;
@@ -82,25 +101,30 @@ addStudentForm.addEventListener('submit', (event) => {
                     <button class="remove-button"><i class="fa-solid fa-user-xmark"></i></button>
                 </td>
             `;
-
             const tableBody = document.querySelector('.main-table tbody');
             tableBody.appendChild(newRow);
 
             newRow.querySelector('.edit-button').addEventListener('click', handleEdit);
             newRow.querySelector('.remove-button').addEventListener('click', handleRemove);
-            
-            sendAddEditStudentFormDataToServer('/api/students', id, group, name, surname, gender, birthday);
 
+            sendAddEditStudentFormDataToServer('/api/students', id, group, name, surname, gender, birthday);
         }
 
         addStudentForm.reset();
         modal.style.display = 'none';
         setupCheckboxEventListeners();
     } else {
-        alert("You need to fill information.");
+        
+        const inputdate = document.getElementById('birthday');
+        const inputname = document.getElementById('name');
+        const inputsurname = document.getElementById('surname');
+        document.getElementById('birthday-warning').textContent = "The person should be more than 16 years old.";
+        inputdate.style.border = '1px solid red';
+        inputname.style.border = '1px solid red';
+        inputsurname.style.border = '1px solid red';
     }
-
 });
+
 
 // Function to send form data to the server for validation
 function sendAddEditStudentFormDataToServer(serverPath, id, groupField, firstNameField, lastNameField, genderField, birthdayField) {
@@ -182,7 +206,7 @@ function resetModalAndForm() {
 
     document.getElementById('group').selectedIndex = 0;
     document.getElementById('gender').selectedIndex = 0;
-
+    
    
     const editingRow = document.querySelector('.editing');
     if (editingRow) {
