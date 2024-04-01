@@ -57,29 +57,50 @@ cancelRemoveButton.addEventListener('click', () => {
 });
 
 
+function validateForm() {
+    var name = document.getElementById('name').value;
+    var surname = document.getElementById('surname').value;
+    var birthday = document.getElementById('birthday').value;
 
+    var regex = /^[A-Za-zА-Яа-яЁё]+$/;
 
+    if (!regex.test(name)) {
+        document.getElementById('name').style.border = '1px solid red';
+        return false;
+    }
+
+    if (!regex.test(surname)) {
+        document.getElementById('surname').style.border = '1px solid red';
+        return false;
+    }
+
+    var currentDate = new Date();
+    var inputBirthday = new Date(birthday);
+    var age = currentDate.getFullYear() - inputBirthday.getFullYear();
+    
+    if (currentDate < inputBirthday.setFullYear(currentDate.getFullYear() - age)) {
+        age--;
+    }
+
+    if (age < 16) {
+        document.getElementById('birthday-warning').textContent = "The person should be more than 16 yearssdgsdg old.";
+        return false;
+    }
+
+    return true;
+}
 
 addStudentForm.addEventListener('submit', (event) => {
     event.preventDefault();
+
     const group = document.getElementById('group').value;
     const name = document.getElementById('name').value;
     const surname = document.getElementById('surname').value;
     const gender = document.getElementById('gender').value;
     const birthday = document.getElementById('birthday').value;
     const id = document.getElementById('id').value;
-    
-    // Parse birthday into a Date object
-    const inputBirthday = new Date(birthday);
-    
-    // Get today's date
-    const today = new Date();
-    
-    // Calculate the date 16 years ago
-    const sixteenYearsAgo = new Date();
-    sixteenYearsAgo.setFullYear(today.getFullYear() - 16);
 
-    if (name !== "" && surname !== "" && birthday !== "" && inputBirthday < sixteenYearsAgo) {
+    if (name !== "" && surname !== "" && validateForm()) {
         const editingRow = document.querySelector('.editing');
         if (editingRow) {
             editingRow.cells[1].textContent = group;
@@ -114,16 +135,11 @@ addStudentForm.addEventListener('submit', (event) => {
         modal.style.display = 'none';
         setupCheckboxEventListeners();
     } else {
-        
-        const inputdate = document.getElementById('birthday');
-        const inputname = document.getElementById('name');
-        const inputsurname = document.getElementById('surname');
-        document.getElementById('birthday-warning').textContent = "The person should be more than 16 years old.";
-        inputdate.style.border = '1px solid red';
-        inputname.style.border = '1px solid red';
-        inputsurname.style.border = '1px solid red';
+        document.getElementById('name').style.border = '1px solid red';
+        document.getElementById('surname').style.border = '1px solid red';
     }
 });
+
 
 
 // Function to send form data to the server for validation

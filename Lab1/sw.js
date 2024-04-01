@@ -2,26 +2,28 @@
 SW:  CACHE_NAME = 'PWA_Cache';
 
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open(CACHE_NAME).then(cache => {
             console.log('Opened cache', CACHE_NAME);
             return cache.addAll([
-                '/html/students.html',
-                '/css/students.css',
-                '/html/tasks.html',
-                '/css/tasks.css',
-                '/css/header.css',
-                
-                '/css/all.min.css',
-                
-                '/js/script.js',
-                '/manifest.json',  
-                '/images/bell-icon.png'
-            ]);
+                "/Lab1/html/students.html",
+                "/Lab1/html/tasks.html",
+                "/Lab1/css/students.css",
+                "/Lab1/css/tasks.css",
+                "/Lab1/css/header.css",
+                "/Lab1/js/script.js",
+                "/Lab1/manifest.json",
+                "/Lab1/images/bell-icon.png",
+            ]).catch(error => {
+                console.error('Cache addAll error:', error);
+            });
+        }).catch(error => {
+            console.error('Cache open error:', error);
         })
     );
 });
+
 
 
 
